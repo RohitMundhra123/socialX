@@ -22,14 +22,12 @@ class _HomePageState extends State<HomePage> {
     fetchNews();
   }
 
-  // Function to save news data to local storage
   Future<void> saveNewsToLocalStorage(List<dynamic> news) async {
     final prefs = await SharedPreferences.getInstance();
     final newsJson = news.map((item) => jsonEncode(item)).toList();
     await prefs.setStringList('newsData', newsJson);
   }
 
-  // Function to load news data from local storage
   Future<List<dynamic>> loadNewsFromLocalStorage() async {
     final prefs = await SharedPreferences.getInstance();
     final newsJson = prefs.getStringList('newsData');
@@ -47,11 +45,10 @@ class _HomePageState extends State<HomePage> {
       setState(() {
         newsData = data;
       });
-      // Save the fetched news data to local storage
+
       await saveNewsToLocalStorage(data);
     } catch (e) {
       print("Error fetching news data: $e");
-      // If fetching fails, attempt to load news data from local storage
       final localData = await loadNewsFromLocalStorage();
       setState(() {
         newsData = localData;

@@ -77,8 +77,6 @@ class _LoginPageState extends State<LoginPage> {
     return await FirebaseAuth.instance.signInWithCredential(credential);
   }
 
-  // Trigger the sign-in flow
-
   Future<UserCredential> signInWithFacebook() async {
     final LoginResult loginResult = await FacebookAuth.instance.login();
     final OAuthCredential facebookAuthCredential =
