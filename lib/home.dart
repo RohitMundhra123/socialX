@@ -1,7 +1,9 @@
+import 'dart:convert';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
 import 'package:social_x/utils/api_service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -20,6 +22,24 @@ class _HomePageState extends State<HomePage> {
     fetchNews();
   }
 
+  // Function to save news data to local storage
+  Future<void> saveNewsToLocalStorage(List<dynamic> news) async {
+    final prefs = await SharedPreferences.getInstance();
+    final newsJson = news.map((item) => jsonEncode(item)).toList();
+    await prefs.setStringList('newsData', newsJson);
+  }
+
+  // Function to load news data from local storage
+  Future<List<dynamic>> loadNewsFromLocalStorage() async {
+    final prefs = await SharedPreferences.getInstance();
+    final newsJson = prefs.getStringList('newsData');
+    if (newsJson != null) {
+      return newsJson.map((item) => jsonDecode(item)).toList();
+    } else {
+      return [];
+    }
+  }
+
   fetchNews() async {
     try {
       final apiCall = ApiCall();
@@ -27,8 +47,15 @@ class _HomePageState extends State<HomePage> {
       setState(() {
         newsData = data;
       });
+      // Save the fetched news data to local storage
+      await saveNewsToLocalStorage(data);
     } catch (e) {
       print("Error fetching news data: $e");
+      // If fetching fails, attempt to load news data from local storage
+      final localData = await loadNewsFromLocalStorage();
+      setState(() {
+        newsData = localData;
+      });
     }
   }
 

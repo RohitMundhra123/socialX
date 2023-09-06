@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:country_picker/country_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -79,15 +78,14 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Future<UserCredential> signInWithFacebook() async {
-    final LoginResult loginResult = await FacebookAuth.instance.login(
-      permissions: ['email', 'public_profile', 'user_birthday']
-    );
-    final OAuthCredential facebookAuthCredential = FacebookAuthProvider.credential(loginResult.accessToken!.token);
+    final LoginResult loginResult = await FacebookAuth.instance
+        .login(permissions: ['email', 'public_profile', 'user_birthday']);
+    final OAuthCredential facebookAuthCredential =
+        FacebookAuthProvider.credential(loginResult.accessToken!.token);
 
     final userData = await FacebookAuth.instance.getUserData();
     return FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
   }
-
 
   void _register() async {
     bool isValid = _formkey2.currentState!.validate();
@@ -116,9 +114,6 @@ class _LoginPageState extends State<LoginPage> {
         'username': entereduser,
         'email': enteredemail,
         'phone': enteredphone,
-      });
-      setState(() {
-        isAuthenticating = false;
       });
     } on FirebaseAuthException catch (error) {
       ScaffoldMessenger.of(context).clearSnackBars();
