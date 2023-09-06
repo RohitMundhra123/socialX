@@ -2,6 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:country_picker/country_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 final _firebase = FirebaseAuth.instance;
 
@@ -23,6 +26,8 @@ class _LoginPageState extends State<LoginPage> {
   bool terms = true;
   var entereduser = "";
   bool isAuthenticating = false;
+  final FacebookAuth facebookAuth = FacebookAuth.instance;
+  final GoogleSignIn googleSignIn = GoogleSignIn();
   Country selectedCountry = Country(
     phoneCode: "91",
     countryCode: "IN",
@@ -61,6 +66,28 @@ class _LoginPageState extends State<LoginPage> {
       });
     }
   }
+
+  Future<UserCredential> signInWithGoogle() async {
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+    final GoogleSignInAuthentication? googleAuth =
+        await googleUser?.authentication;
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
+    return await FirebaseAuth.instance.signInWithCredential(credential);
+  }
+
+  Future<UserCredential> signInWithFacebook() async {
+    final LoginResult loginResult = await FacebookAuth.instance.login(
+      permissions: ['email', 'public_profile', 'user_birthday']
+    );
+    final OAuthCredential facebookAuthCredential = FacebookAuthProvider.credential(loginResult.accessToken!.token);
+
+    final userData = await FacebookAuth.instance.getUserData();
+    return FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
+  }
+
 
   void _register() async {
     bool isValid = _formkey2.currentState!.validate();
@@ -219,10 +246,14 @@ class _LoginPageState extends State<LoginPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              signInWithGoogle();
+                            },
                             icon: Image.asset("assets/icons/google.png")),
                         IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              signInWithFacebook();
+                            },
                             icon: Image.asset("assets/icons/facebook.png"))
                       ],
                     ),
