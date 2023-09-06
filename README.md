@@ -25,14 +25,7 @@ Authentication: Users can log in or sign up using their email and password. Alte
 <b>shared_preferences</b>: Used to store data locally in the app for offline access.<br>
 
 
-## Screenshots
-<b>Login Page</b>
-![Screenshot_2023-09-06-22-09-25-88_c4ca5d8247cfbdcdc189208403c7abfb](https://github.com/RohitMundhra123/socialX/assets/91062387/7cf685db-133d-4d97-9f08-0809612d0ef3)
-![Screenshot_2023-09-06-22-09-28-25_c4ca5d8247cfbdcdc189208403c7abfb](https://github.com/RohitMundhra123/socialX/assets/91062387/eecdb905-e2a8-4fb6-a50e-4f37cc61979a)
-<b>Home Page</b>
-![Screenshot_2023-09-06-22-09-53-68_c4ca5d8247cfbdcdc189208403c7abfb](https://github.com/RohitMundhra123/socialX/assets/91062387/2fac2e8b-6704-42c1-8e8b-06636669547c)
-<b>News Details</b>
-![Screenshot_2023-09-06-22-09-48-41_c4ca5d8247cfbdcdc189208403c7abfb](https://github.com/RohitMundhra123/socialX/assets/91062387/64507d69-4da5-4cbe-9575-72320e22f2cd)
+
 
 ## Getting Started
 To get started with the Social_X app, follow these steps:
