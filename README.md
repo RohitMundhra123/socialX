@@ -13,22 +13,26 @@ Authentication: Users can log in or sign up using their email and password. Alte
 <b>Logout</b>: Users can log out of their accounts to secure their access to the app.
 
 ## Dependencies Used
-<b>firebase_core</b>: Handles the connection between Firebase and the Flutter app.
-<b>firebase_auth</b>: Provides authentication functionality using email and password.
-<b>country_picker</b>: Allows users to select their country code when entering their mobile number.
-<b>http</b>: Used for making API calls to fetch news data.
-<b>readmore</b>: Enhances the news article display with a "read more" feature for longer articles.
-<b>cloud_firestore</b>: Enables storing user information, such as name and mobile number, in the cloud.
-<b>provider</b>: Used for state management to access user email ID.
-<b>google_sign_in</b>: Provides Google sign-in functionality.
-<b>flutter_facebook_auth</b>: Allows users to log in using their Facebook accounts.
-<b>shared_preferences</b>: Used to store data locally in the app for offline access.
+<b>firebase_core</b>: Handles the connection between Firebase and the Flutter app.<br>
+<b>firebase_auth</b>: Provides authentication functionality using email and password.<br>
+<b>country_picker</b>: Allows users to select their country code when entering their mobile number.<br>
+<b>http</b>: Used for making API calls to fetch news data.<br>
+<b>readmore</b>: Enhances the news article display with a "read more" feature for longer articles.<br>
+<b>cloud_firestore</b>: Enables storing user information, such as name and mobile number, in the cloud.<br>
+<b>provider</b>: Used for state management to access user email ID.<br>
+<b>google_sign_in</b>: Provides Google sign-in functionality.<br>
+<b>flutter_facebook_auth</b>: Allows users to log in using their Facebook accounts.<br>
+<b>shared_preferences</b>: Used to store data locally in the app for offline access.<br>
 
 
 ## Screenshots
 <b>Login Page</b>
+![Screenshot_2023-09-06-22-09-25-88_c4ca5d8247cfbdcdc189208403c7abfb](https://github.com/RohitMundhra123/socialX/assets/91062387/7cf685db-133d-4d97-9f08-0809612d0ef3)
+![Screenshot_2023-09-06-22-09-28-25_c4ca5d8247cfbdcdc189208403c7abfb](https://github.com/RohitMundhra123/socialX/assets/91062387/eecdb905-e2a8-4fb6-a50e-4f37cc61979a)
 <b>Home Page</b>
+![Screenshot_2023-09-06-22-09-53-68_c4ca5d8247cfbdcdc189208403c7abfb](https://github.com/RohitMundhra123/socialX/assets/91062387/2fac2e8b-6704-42c1-8e8b-06636669547c)
 <b>News Details</b>
+![Screenshot_2023-09-06-22-09-48-41_c4ca5d8247cfbdcdc189208403c7abfb](https://github.com/RohitMundhra123/socialX/assets/91062387/64507d69-4da5-4cbe-9575-72320e22f2cd)
 
 ## Getting Started
 To get started with the Social_X app, follow these steps:
@@ -38,6 +42,13 @@ To get started with the Social_X app, follow these steps:
 <li>Install the required dependencies by running flutter pub get.</li>
 <li>Run the app using flutter run.</li>
 </ul>
+
+
+https://github.com/RohitMundhra123/socialX/assets/91062387/fc623226-5c55-4649-abdc-292448475367
+
+
+
+
 
 
 
